@@ -162,6 +162,61 @@ def t_1_6():
     print '%.2f' % (r)
 
 
+def t_2_1():
+    s = raw_input()
+    print s.swapcase()
+
+
+def t_2_5():
+    string = raw_input()
+    sub = raw_input()
+    count = 0
+    sub_index = string.find(sub)
+    while sub_index >= 0:
+        count += 1
+        sub_index = string.find(sub, sub_index+1)
+    print '%d' % (count)
+
+
+def t_2_6():
+    #  r = [False, False, False, False, False]
+    #  for c in raw_input():
+        #  if c.isalnum():
+            #  r[0] = True
+        #  if c.isalpha():
+            #  r[1] = True
+        #  if c.isdigit():
+            #  r[2] = True
+        #  if c.islower():
+            #  r[3] = True
+        #  if c.isupper():
+            #  r[4] = True
+    #  print '%s\n%s\n%s\n%s\n%s' % tuple(r)
+# update
+    s = raw_input()
+    print any(True for c in s if c.isalnum())
+    print any(True for c in s if c.isalpha())
+    print any(True for c in s if c.isdigit())
+    print any(True for c in s if c.islower())
+    print any(True for c in s if c.isupper())
+
+
+def t_2_7():
+    N, m = map(int,raw_input().split()) # More than 6 lines of code will result in 0 score. Blank lines are not counted.
+    for i in xrange(1,N,2):
+        print ('.|.'*i).center(m, '-')
+    print 'WELCOME'.center(m, '-')
+    for i in xrange(N-2,-1,-2):
+        print ('.|.'*i).center(m, '-')
+
+
+def t_2_8():
+    width = 6
+    for i in xrange(1, int(raw_input())+1):
+        print '%s%s%s%s' % (str(i).rjust(width),
+                oct(i).lstrip('0').rjust(width),
+                hex(i).lstrip('0x').rjust(width).upper(),
+                bin(i).lstrip('0b').rjust(width))
 
 
 if '__main__' == __name__:
