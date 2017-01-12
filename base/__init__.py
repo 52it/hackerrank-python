@@ -1,6 +1,6 @@
 #!/usr/bin/env ptyhon
 # -*- coding: utf-8 -*-
-import sys
+import sys, math, decimal
 
 
 def t1():
@@ -91,6 +91,76 @@ def __operate_list(data_list, strparam):
         data_list.pop()
     elif strparam.startswith('reverse'):
         data_list.reverse()
+
+
+def t_1_2():
+    n = int(raw_input())
+    int_list = tuple(map(int, raw_input().split(' ', n-1)))
+    print hash(int_list)
+
+
+def t_1_3():
+    #  x = int(raw_input())
+    #  y = int(raw_input())
+    #  z = int(raw_input())
+    #  n = int(raw_input())
+    #  result = []
+    #  for i in xrange(x + 1):
+        #  for j in xrange(y + 1):
+            #  for k in xrange(z + 1):
+                #  if i+j+k == n:
+                    #  continue
+                #  result.append([i, j, k])
+    #  print result
+# update
+    x, y, z, n = [int(raw_input())+1 for _ in xrange(4)]
+    n -= 1
+    print [[i, j, k] for i in xrange(x) for j in xrange(y) for k in xrange(z) if i+j+k != n]
+
+
+def t_1_4():
+    n = int(raw_input())
+    arr = set(map(int, raw_input().split(' ', n-1)))
+    max_int = max(arr)
+    arr.remove(max_int)
+    print max(arr)
+
+
+def t_1_5():
+    #  students = []
+    #  scores = set()
+    #  for _ in xrange(int(raw_input())):
+        #  name = raw_input()
+        #  score = float(raw_input())
+        #  scores.add(score)
+        #  students.append([name, score])
+    #  score_list = list(scores)
+    #  score_list.sort()
+    #  target_score = score_list[1]
+    #  results = [n for n, s in students if s == target_score]
+    #  results.sort()
+    #  for n in results:
+        #  print n
+#update
+    marksheet = []
+    for _ in xrange(int(raw_input())):
+        marksheet.append([raw_input(), float(raw_input())])
+    score_set = set([s for _, s in marksheet])
+    score_set.remove(min(score_set))
+    target_score = min(score_set)
+    result_list = sorted([ n for n, s in marksheet if s == target_score])
+    print '\n'.join(result_list)
+
+
+def t_1_6():
+    marksheet = []
+    for _ in xrange(int(raw_input())):
+        marksheet.append(raw_input().split())
+    student = raw_input()
+    mark_list = map(float, [x for ss in marksheet if ss[0] == student for x in ss[1:]])
+    r = math.fsum(mark_list)/round(len(mark_list), 1)
+    print '%.2f' % (r)
+
 
 
 
